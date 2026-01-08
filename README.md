@@ -1,16 +1,44 @@
-# React + Vite
+🌦️ Glassmorphic Weather Dashboard
+A sleek, modern weather application built with React and Tailwind CSS. This project features a Glassmorphic UI and provides real-time weather data.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+Real-time Data: Fetches live weather updates using the OpenWeatherMap API and Axios.
 
-Currently, two official plugins are available:
+Glassmorphic UI: A premium "frosted glass" aesthetic built with Tailwind's backdrop-blur filters.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Interactive Search: Search by city name with instant keyboard (Enter) or click support.
 
-## React Compiler
+🚀 Tech Stack
+Frontend: React.js
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Styling: Tailwind CSS
 
-## Expanding the ESLint configuration
+Icons: React Icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+API: OpenWeatherMap API
+
+HTTP Client: Axios
+
+🛠️ Installation & Setup
+Clone the repository:
+
+Bash
+
+git clone https://github.com/oussamadevstudio/WeatherApp.git  
+Install dependencies:
+
+Bash
+
+npm install
+Get your API Key: Sign up at OpenWeatherMap to get your free API key.
+
+Run the app:
+
+Bash -> npm run dev
+
+📝 Key Learning Outcomes
+Handling asynchronous API calls with Axios.
+
+Managing complex UI states with React Hooks (useState).
+
+Advanced Tailwind CSS techniques for Glassmorphism and responsive layouts.

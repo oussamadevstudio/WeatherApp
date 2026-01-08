@@ -11,21 +11,28 @@ function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const API_KEY = "ee2ad02bffac678c70ce9d81553797ae"
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
 
   const searchLocation = (event) => {
     if(event.type === 'click' || event.key === "Enter"){
+      
+      setLoading(true)
+      setError("")
+
       axios.get(url).then(
         (response) => {
           setData(response.data)
           console.log(response.data)
           setLocation("")
-          setError("")
+          setLoading(false)
+          
         }
       ).catch((err) => {
         if(err.response && err.response.status === 404){
+          setLoading(false)
           setError("City not found. Please try again.");
         } else {
           setError("Something went wrong.");
@@ -58,6 +65,19 @@ function App() {
           <button className="absolute right-2 top-1.5 flex justify-center items-center rounded-full w-10 h-10 bg-[#0ea5e9]/60" 
                   onClick = {searchLocation}><MdOutlineArrowForwardIos color="white"/></button>
         </div>
+
+        {loading && (
+                      <div className="flex gap-x-2 items-center">
+                        <div className="flex justify-center items-center py-10">
+                          <div className="relative w-8 h-8">
+                                      {[...Array(12)].map((_, i) => (
+                            <div key={i} className="spinner-blade"></div>
+                                    ))}
+                          </div>
+                        </div>
+                       <p className="text-blue-500 animate-pulse"> loading...</p>
+                      </div>
+)}
 
         {error && <p style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
 

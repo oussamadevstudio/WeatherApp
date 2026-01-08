@@ -10,6 +10,7 @@ function App() {
 
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
+  const [error, setError] = useState("")
 
   const API_KEY = "ee2ad02bffac678c70ce9d81553797ae"
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
@@ -21,10 +22,22 @@ function App() {
           setData(response.data)
           console.log(response.data)
           setLocation("")
+          setError("")
         }
-      )
+      ).catch((err) => {
+        if(err.response && err.response.status === 404){
+          setError("City not found. Please try again.");
+        } else {
+          setError("Something went wrong.");
+        }
+        setData({})
+        setLocation("")
+        
+      })
     }
   }
+
+
 
   return(
     <>
@@ -45,6 +58,8 @@ function App() {
           <button className="absolute right-2 top-1.5 flex justify-center items-center rounded-full w-10 h-10 bg-[#0ea5e9]/60" 
                   onClick = {searchLocation}><MdOutlineArrowForwardIos color="white"/></button>
         </div>
+
+        {error && <p style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
 
         {data.weather && (<Dashboard data={data}/>)}
       </div>
